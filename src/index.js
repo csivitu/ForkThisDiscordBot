@@ -251,7 +251,8 @@ client.on("messageCreate", async (message) => {
     });
   }
   if (message.content === "react") {
-    const like = new ButtonBuilder()
+    const reactRow = new MessageActionRow().addComponents(
+     const like = new ButtonBuilder()
       .setCustomId("like")
       .setLabel("Like")
       .setStyle(ButtonStyle.Primary)
@@ -271,11 +272,6 @@ client.on("messageCreate", async (message) => {
       .setLabel("Exploring")
       .setStyle(ButtonStyle.Primary)
       .setEmoji({ name: "🤓" });
-    const reactRow = new ActionRowBuilder().addComponents(
-      like,
-      love,
-      fun,
-      learn
     );
     message.reply({
       content: "Are you having a good time?",
