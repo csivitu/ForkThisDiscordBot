@@ -255,7 +255,7 @@ client.on("messageCreate", async (message) => {
      const like = new ButtonBuilder()
       .setCustomId("like")
       .setLabel("Like")
-      .setStyle(ButtonStyle.Primary)
+      .setStyle(ButtonStyle.Link)
       .setEmoji({ name: "👍" });
     const love = new ButtonBuilder()
       .setCustomId("love")
@@ -265,7 +265,7 @@ client.on("messageCreate", async (message) => {
     const fun = new ButtonBuilder()
       .setCustomId("fun")
       .setLabel("Having Fun")
-      .setStyle(ButtonStyle.Primary)
+      .setStyle(ButtonStyle.Secondary)
       .setEmoji({ name: "🥳" });
     const learn = new ButtonBuilder()
       .setCustomId("learn")
