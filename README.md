@@ -36,10 +36,8 @@ To get a local copy up and running follow these simple steps.
 3. Go to Applications, click on New Application, and Create An Application.
 
 4. Click on the application created by you, head over to 
-Bot -> Reset Token. Copy this token. 
-
-5.Check all three intents under Privileged Gateway Intents. Select the necessary Bot Permissions.
-
+Bot -> Reset Token. Copy this token.
+5. Check all three intents under Privileged Gateway Intents. Select the necessary Bot Permissions.
 6. Next, click on OAuth2, copy the CLIENT ID.
 
 7. Go to URL Generator (under OAuth2), select applications.commands
@@ -66,10 +64,15 @@ npm install dotenv
 
 12.Create a .env file in your code editor and add the following :
 
+```sh
 BOT_TOKEN = (Token obtained in step 4)
+```
+```sh
 CLIENT_ID=(Client ID obtained in step 5)
+```
+```sh
 GUILD_ID= (Server ID of Discord Server)
-
+```
 13. To run the bot, run the following commands in your terminal
 
 to register slash commands:
