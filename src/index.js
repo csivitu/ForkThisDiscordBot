@@ -187,18 +187,28 @@ const embed3 = new EmbedBuilder()
   .setTitle("Repos List")
   .setColor("Random")
   .addFields(
-    {
-      name: "MiniGames : ",
-      value: ".description..",
+  {
+      name: "MiniGames ",
+      value: "...",
       inline: false,
     },
     {
-      name: "FFCS Planner :",
-      value: " ...",
+      name: "LendLogic",
+      value: "...",
       inline: false,
     },
     {
-      name: "Discord Bot : ",
+      name: "ForkThis Discord Bot",
+      value: "...",
+      inline: false,
+    },
+    {
+      name: "Lost And Found",
+      value: "...",
+      inline: false,
+    },
+    {
+      name: "Whatsapp Automation",
       value: "...",
       inline: false,
     }
@@ -286,23 +296,23 @@ client.on("interactionCreate", async (interaction) => {
   }
 
   if (interaction.commandName === "repo-1") {
-    const url1 = "https://github.com/";
+    const url1 = "https://github.com/csivitu/Minigames";
     interaction.reply(`Click here to redirect to Github link: ${url1}`);
   }
   if (interaction.commandName === "repo-2") {
-    const url2 = "https://github.com/";
+    const url2 = "https://github.com/csivitu/LendLogic";
     interaction.reply(`Click here to redirect to Github link: ${url2}`);
   }
   if (interaction.commandName === "repo-3") {
-    const url3 = "https://github.com/";
+    const url3 = "https://github.com/csivitu/ForkThisDiscordBot";
     interaction.reply(`Click here to redirect to Github link: ${url3}`);
   }
   if (interaction.commandName === "repo-4") {
-    const url4 = "https://github.com/";
+    const url4 = "https://github.com/csivitu/LostAndFound";
     interaction.reply(`Click here to redirect to Github link: ${url4}`);
   }
   if (interaction.commandName === "repo-5") {
-    const url5 = "https://github.com/";
+    const url5 = "https://github.com/ACM-VIT/WhatsApp-Automation";
     interaction.reply(`Click here to redirect to Github link: ${url5}`);
   }
   if (interaction.commandName === "prize") {
