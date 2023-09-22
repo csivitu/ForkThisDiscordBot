@@ -33,7 +33,7 @@ const resource = new EmbedBuilder()
     {
       name: "MDN Web Docs",
       value:
-        "[https://developer.mozilla.org/en-US](https://developer.mozilla.org/en-US)",
+        "https://developer.mozilla.org/en-US",
       inline: false,
     },
     {
@@ -44,18 +44,18 @@ const resource = new EmbedBuilder()
     {
       name: "Git and GitHub Crash Course",
       value:
-        "[https://youtu.be/RGOj5yH7evk?si=bNC263j5bYxQXc9t](https://youtu.be/RGOj5yH7evk?si=bNC263j5bYxQXc9t)",
+        "https://youtu.be/RGOj5yH7evk?si=bNC263j5bYxQXc9t",
       inline: false,
     },
     {
       name: "TypeScript",
       value:
-        "(https://www.typescriptlang.org/docs)[https://www.typescriptlang.org/docs]",
+        "https://www.typescriptlang.org/docs",
       inline: false,
     },
     {
-      name: "How to Code a 2D Game https://www.freecodecamp.org/news/how-to-code-a-2d-game-using-javascript-html-and-css ",
-      value: " 123 ",
+      name: "How to Code a 2D Game" ,
+      value: "https://www.freecodecamp.org/news/how-to-code-a-2d-game-using-javascript-html-and-css",
       inline: false,
     },
     {
