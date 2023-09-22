@@ -160,7 +160,7 @@ const embed1 = new EmbedBuilder()
       inline: true,
     }
   )
-  .setFooter("CSI-VIT");
+  .setFooter({ text: "CSI-VIT" });
 
 const embed2 = new EmbedBuilder()
   .setTitle("ForkThis Timeline")
@@ -187,7 +187,7 @@ const embed3 = new EmbedBuilder()
   .setTitle("Repos List")
   .setColor("Random")
   .addFields(
-  {
+    {
       name: "MiniGames ",
       value: "...",
       inline: false,
@@ -213,16 +213,16 @@ const embed3 = new EmbedBuilder()
       inline: false,
     }
   )
-  .setFooter("Bot by ForkThis");
+  .setFooter({ text: "Bot by ForkThis" });
 client.on("messageCreate", async (message) => {
   if (message.content === "hello") {
     message.reply("Hola! We hope you have an enriching experience.");
   }
   if (message.content === "help") {
-    message.reply(embeds: [help_commands, help_messages] );
+    message.reply({ embeds: [help_commands, help_messages] });
   }
   if (message.content === "resources") {
-    message.reply(embeds: [resource] );
+    message.reply({ embeds: [resource] });
   }
   if (message.content === "joke") {
     try {
@@ -242,50 +242,76 @@ client.on("messageCreate", async (message) => {
   if (message.content === "socials") {
 
     const socialRow = new MessageActionRow().addComponents(
-     new firstButton ()
-      .setLabel("CSI GitHub")
-      .setStyle(ButtonStyle.Link)
-      .setURL("https://github.com/csivitu");
-   new secondButton()
-      .setLabel("CSI Instagram")
-      .setStyle(ButtonStyle.Secondary)
-      .setURL("https://www.instagram.com/csivitu");
-   new thirdButton()
-      .setLabel("CSI LinkedIn")
-      .setStyle(ButtonStyle.Primary)
-      .setURL("https://www.linkedin.com/company/csivitu");
-    )
+      new firstButton()
+        .setLabel("CSI GitHub")
+        .setStyle(ButtonStyle.Link)
+        .setURL("https://github.com/csivitu"),
+      new secondButton()
+        .setLabel("CSI Instagram")
+        .setStyle(ButtonStyle.Secondary)
+        .setURL("https://www.instagram.com/csivitu"),
+      new thirdButton()
+        .setLabel("CSI LinkedIn")
+        .setStyle(ButtonStyle.Primary)
+        .setURL("https://www.linkedin.com/company/csivitu"),
+    );
     message.reply({
       content: "Follow all our socials for the latest updates!",
       components: [socialRow],
     });
   }
   if (message.content === "react") {
-    const reactRow = new MessageActionRow().addComponents(
-     const like = new ButtonBuilder()
+    const like = new ButtonBuilder()
       .setCustomId("like")
       .setLabel("Like")
-      .setStyle(ButtonStyle.Link)
-      .setEmoji({ name: "👍" });
+      .setStyle(ButtonStyle.Primary)
+      .setEmoji("👍");
     const love = new ButtonBuilder()
       .setCustomId("love")
       .setLabel("Love")
-      .setStyle(ButtonStyle.Primary)
-      .setEmoji({ name: "❤" });
+      .setStyle(ButtonStyle.Success)
+      .setEmoji("❤");
     const fun = new ButtonBuilder()
       .setCustomId("fun")
       .setLabel("Having Fun")
       .setStyle(ButtonStyle.Secondary)
-      .setEmoji({ name: "🥳" });
+      .setEmoji("🥳");
     const learn = new ButtonBuilder()
       .setCustomId("learn")
       .setLabel("Exploring")
-      .setStyle(ButtonStyle.Primary)
-      .setEmoji({ name: "🤓" });
+      .setStyle(ButtonStyle.Danger)
+      .setEmoji("🤓");
+
+    const reactRow = new ActionRowBuilder().addComponents(
+      like, love, fun, learn
     );
-    message.reply({
+    const reply = await message.reply({
       content: "Are you having a good time?",
       components: [reactRow],
+    });
+
+    const filter = (i) => i.user.id === message.author.id;
+
+    const collector = reply.createMessageComponentCollector({
+      componentType: ComponentType.Button,
+      filter,
+    });
+
+    collector.on("collect", (interaction) => {
+      switch (interaction.customId) {
+        case "like":
+          interaction.reply(message.author.username + " liked ForkThis.");
+          break;
+        case "love":
+          interaction.reply(message.author.username + " loved ForkThis.");
+          break;
+        case "fun":
+          interaction.reply(message.author.username + " had fun in ForkThis.");
+          break;
+        case "learn":
+          interaction.reply(message.author.username + " learned in ForkThis.");
+          break;
+      }
     });
   }
 });
