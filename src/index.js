@@ -213,7 +213,7 @@ const embed3 = new EmbedBuilder()
       inline: false,
     }
   )
-  .setFooter("Bot by ForkThis");
+  .setFooter({ text: "Bot by ForkThis" });
 client.on("messageCreate", async (message) => {
   if (message.content === "hello") {
     message.reply("Hola! We hope you have an enriching experience.");
