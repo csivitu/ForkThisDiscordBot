@@ -261,32 +261,58 @@ client.on("messageCreate", async (message) => {
     });
   }
   if (message.content === "react") {
-    const reactRow = new MessageActionRow().addComponents(
-     const like = new ButtonBuilder()
-      .setCustomId("like")
-      .setLabel("Like")
-      .setStyle(ButtonStyle.Link)
-      .setEmoji({ name: "👍" });
-    const love = new ButtonBuilder()
-      .setCustomId("love")
-      .setLabel("Love")
-      .setStyle(ButtonStyle.Primary)
-      .setEmoji({ name: "❤" });
-    const fun = new ButtonBuilder()
-      .setCustomId("fun")
-      .setLabel("Having Fun")
-      .setStyle(ButtonStyle.Secondary)
-      .setEmoji({ name: "🥳" });
-    const learn = new ButtonBuilder()
-      .setCustomId("learn")
-      .setLabel("Exploring")
-      .setStyle(ButtonStyle.Primary)
-      .setEmoji({ name: "🤓" });
+    const like = new ButtonBuilder()
+     .setCustomId("like")
+     .setLabel("Like")
+     .setStyle(ButtonStyle.Primary)
+     .setEmoji({ name: "👍" });
+   const love = new ButtonBuilder()
+     .setCustomId("love")
+     .setLabel("Love")
+     .setStyle(ButtonStyle.Success)
+     .setEmoji({ name: "❤" });
+   const fun = new ButtonBuilder()
+     .setCustomId("fun")
+     .setLabel("Having Fun")
+     .setStyle(ButtonStyle.Secondary)
+     .setEmoji({ name: "🥳" });
+   const learn = new ButtonBuilder()
+     .setCustomId("learn")
+     .setLabel("Exploring")
+     .setStyle(ButtonStyle.Danger)
+     .setEmoji({ name: "🤓" });
+    const reactRow = new ActionRowBuilder().addComponents(
+      like, love, fun, learn
     );
-    message.reply({
+    const reply = await message.reply({
       content: "Are you having a good time?",
       components: [reactRow],
     });
+
+    const filter = (i) => i.user.id === message.author.id;
+
+    const collector = reply.createMessageComponentCollector({
+      componentType: ComponentType.Button,
+      filter,
+    });
+
+    collector.on("collect", (interaction) => {
+      switch (interaction.customId) {
+        case "like":
+          interaction.reply(message.author.username + " liked ForkThis.");
+          break;
+        case "love":
+          interaction.reply(message.author.username + " loved ForkThis.");
+          break;
+        case "fun":
+          interaction.reply(message.author.username + " had fun in ForkThis.");
+          break;
+        case "learn":
+          interaction.reply(message.author.username + " learned in ForkThis.");
+          break;
+      }
+    });
+
   }
 });
 
