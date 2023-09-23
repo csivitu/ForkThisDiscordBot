@@ -234,7 +234,7 @@ client.on("messageCreate", async (message) => {
         return json;
       };
       let joke = await newJoke();
-      message.reply(` `);
+      message.reply(`${joke.setup} ${joke.delivery}`);
     } catch (error) {
       console.log("Error, joke");
     }
