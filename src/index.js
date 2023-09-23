@@ -33,7 +33,7 @@ const resource = new EmbedBuilder()
     {
       name: "MDN Web Docs",
       value:
-        "[https://developer.mozilla.org/en-US](https://developer.mozilla.org/en-US)",
+        "https://developer.mozilla.org/en-US",
       inline: false,
     },
     {
@@ -44,18 +44,18 @@ const resource = new EmbedBuilder()
     {
       name: "Git and GitHub Crash Course",
       value:
-        "[https://youtu.be/RGOj5yH7evk?si=bNC263j5bYxQXc9t](https://youtu.be/RGOj5yH7evk?si=bNC263j5bYxQXc9t)",
+        "https://youtu.be/RGOj5yH7evk?si=bNC263j5bYxQXc9t",
       inline: false,
     },
     {
       name: "TypeScript",
       value:
-        "(https://www.typescriptlang.org/docs)[https://www.typescriptlang.org/docs]",
+        "https://www.typescriptlang.org/docs",
       inline: false,
     },
     {
-      name: "How to Code a 2D Game https://www.freecodecamp.org/news/how-to-code-a-2d-game-using-javascript-html-and-css ",
-      value: " 123 ",
+      name: "How to Code a 2D Game",
+      value: "https://www.freecodecamp.org/news/how-to-code-a-2d-game-using-javascript-html-and-css",
       inline: false,
     },
     {
@@ -160,7 +160,7 @@ const embed1 = new EmbedBuilder()
       inline: true,
     }
   )
-  .setFooter("CSI-VIT");
+  .setFooter({ text: "CSI-VIT" });
 
 const embed2 = new EmbedBuilder()
   .setTitle("ForkThis Timeline")
@@ -213,16 +213,16 @@ const embed3 = new EmbedBuilder()
       inline: false,
     }
   )
-  .setFooter("Bot by ForkThis");
+  .setFooter({ text: "Bot by ForkThis" });
 client.on("messageCreate", async (message) => {
   if (message.content === "hello") {
     message.reply("Hola! We hope you have an enriching experience.");
   }
   if (message.content === "help") {
-    message.reply(embeds: [help_commands, help_messages] );
+    message.reply({ embeds: [help_commands, help_messages] });
   }
   if (message.content === "resources") {
-    message.reply(embeds: [resource] );
+    message.reply({ embeds: [resource] });
   }
   if (message.content === "joke") {
     try {
@@ -234,26 +234,26 @@ client.on("messageCreate", async (message) => {
         return json;
       };
       let joke = await newJoke();
-      message.reply(` `);
+      message.reply(`${joke.setup} ${joke.delivery}`);
     } catch (error) {
       console.log("Error, joke");
     }
   }
   if (message.content === "socials") {
 
-    const socialRow = new MessageActionRow().addComponents(
-     new firstButton ()
+    const socialRow = new ActionRowBuilder().addComponents(
+     new ButtonBuilder ()
       .setLabel("CSI GitHub")
       .setStyle(ButtonStyle.Link)
-      .setURL("https://github.com/csivitu");
-   new secondButton()
+      .setURL("https://github.com/csivitu"),
+   new ButtonBuilder()
       .setLabel("CSI Instagram")
-      .setStyle(ButtonStyle.Secondary)
-      .setURL("https://www.instagram.com/csivitu");
-   new thirdButton()
+      .setStyle(ButtonStyle.Link)
+      .setURL("https://www.instagram.com/csivitu"),
+   new ButtonBuilder()
       .setLabel("CSI LinkedIn")
-      .setStyle(ButtonStyle.Primary)
-      .setURL("https://www.linkedin.com/company/csivitu");
+      .setStyle(ButtonStyle.Link)
+      .setURL("https://www.linkedin.com/company/csivitu"),
     )
     message.reply({
       content: "Follow all our socials for the latest updates!",
