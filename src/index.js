@@ -160,7 +160,7 @@ const embed1 = new EmbedBuilder()
       inline: true,
     }
   )
-  .setFooter("CSI-VIT");
+  .setFooter({ text: "CSI-VIT" });
 
 const embed2 = new EmbedBuilder()
   .setTitle("ForkThis Timeline")
