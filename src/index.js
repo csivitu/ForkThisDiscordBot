@@ -241,19 +241,19 @@ client.on("messageCreate", async (message) => {
   }
   if (message.content === "socials") {
 
-    const socialRow = new MessageActionRow().addComponents(
-     new firstButton ()
+    const socialRow = new ActionRowBuilder().addComponents(
+     new ButtonBuilder ()
       .setLabel("CSI GitHub")
       .setStyle(ButtonStyle.Link)
-      .setURL("https://github.com/csivitu");
-   new secondButton()
+      .setURL("https://github.com/csivitu"),
+   new ButtonBuilder()
       .setLabel("CSI Instagram")
-      .setStyle(ButtonStyle.Secondary)
-      .setURL("https://www.instagram.com/csivitu");
-   new thirdButton()
+      .setStyle(ButtonStyle.Link)
+      .setURL("https://www.instagram.com/csivitu"),
+   new ButtonBuilder()
       .setLabel("CSI LinkedIn")
-      .setStyle(ButtonStyle.Primary)
-      .setURL("https://www.linkedin.com/company/csivitu");
+      .setStyle(ButtonStyle.Link)
+      .setURL("https://www.linkedin.com/company/csivitu"),
     )
     message.reply({
       content: "Follow all our socials for the latest updates!",
