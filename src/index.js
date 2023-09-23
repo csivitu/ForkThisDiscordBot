@@ -269,17 +269,17 @@ client.on("messageCreate", async (message) => {
    const love = new ButtonBuilder()
      .setCustomId("love")
      .setLabel("Love")
-     .setStyle(ButtonStyle.Success)
+     .setStyle(ButtonStyle.Primary)
      .setEmoji({ name: "❤" });
    const fun = new ButtonBuilder()
      .setCustomId("fun")
      .setLabel("Having Fun")
-     .setStyle(ButtonStyle.Secondary)
+     .setStyle(ButtonStyle.Primary)
      .setEmoji({ name: "🥳" });
    const learn = new ButtonBuilder()
      .setCustomId("learn")
      .setLabel("Exploring")
-     .setStyle(ButtonStyle.Danger)
+     .setStyle(ButtonStyle.Primary)
      .setEmoji({ name: "🤓" });
     const reactRow = new ActionRowBuilder().addComponents(
       like, love, fun, learn
