@@ -219,10 +219,10 @@ client.on("messageCreate", async (message) => {
     message.reply("Hola! We hope you have an enriching experience.");
   }
   if (message.content === "help") {
-    message.reply(embeds: [help_commands, help_messages] );
+    message.reply({ embeds: [help_commands, help_messages] });
   }
   if (message.content === "resources") {
-    message.reply(embeds: [resource] );
+    message.reply({ embeds: [resource] });
   }
   if (message.content === "joke") {
     try {
